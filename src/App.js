@@ -1,20 +1,26 @@
 import React, { useState, useEffect} from 'react';
 import Posts from './components/Posts';
 import Pagination from './components/Pagination';
-// import Search from './components/Search'
+import Search from './components/Search'
 import axios from 'axios';
 import './App.css';
 
 const App = () => {
-  const ITEMS_PER_PAGE = 5;
+  const ITEMS_PER_PAGE = 20;
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  // const [search, setSearch] = useState("modi");
+  const [search, setSearch] = useState("");
   const [postsPerPage] = useState(ITEMS_PER_PAGE);
 
 
   useEffect(() => {
+    const updateStream = async () => {
+      setLoading(true);
+      const res = await axios.get('https://7ba3dbe5f8b0.ngrok.io/fetch/stream/'+search);
+      console.log("res::"+JSON.stringify(res))
+    };
+
     const fetchPosts = async () => {
       setLoading(true);
       const res = await axios.get('https://7ba3dbe5f8b0.ngrok.io/fetch/tweets');
@@ -22,8 +28,11 @@ const App = () => {
       setPosts(res.data.data.data);
       setLoading(false);
     };
+    if(search !== ''){
+      updateStream();
+    }
     fetchPosts();
-  }, []);
+  }, [search]);
 
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
@@ -35,12 +44,12 @@ const App = () => {
   return (
     <div className='container mt-5'>
       <h1 className='text-primary mb-3'>Tweets</h1>
-      {/* <Search
-              onSearch={value => {
-                  setSearch(value);
-                  setCurrentPage(1);
-              }}
-      /> */}
+      <Search
+          onSearch={value => {
+              setSearch(value);
+              setCurrentPage(1);
+          }}
+      />
       <Posts posts={currentPosts} loading={loading} />
       <Pagination
         postsPerPage={postsPerPage}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Search = ({ onSearch }) => {
-    const [search, setSearch] = useState("modi");
+    const [search, setSearch] = useState("");
 
     const onInputChange = e => {
         setSearch(e.target.value);
@@ -18,7 +18,7 @@ const Search = ({ onSearch }) => {
             <input
             type="text"
             className="search-bar"
-            placeholder="Search by #hashtag e.g modi, ipl, news etc.."
+            placeholder="#hashtag or @twitter_handler e.g modi, @iamsrk, #news etc.."
             value={search}
             onChange={onInputChange}
             />
