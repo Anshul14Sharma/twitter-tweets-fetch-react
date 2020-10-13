@@ -10,7 +10,7 @@ const Search = ({ onSearch }) => {
     const getSearch = e => {
         e.preventDefault();
         onSearch(search);
-        setSearch('');
+        // setSearch('');
     }
     
     return (
@@ -18,7 +18,7 @@ const Search = ({ onSearch }) => {
             <input
             type="text"
             className="search-bar"
-            placeholder="Search by #hashtag"
+            placeholder="Search by #hashtag e.g modi, ipl, news etc.."
             value={search}
             onChange={onInputChange}
             />
