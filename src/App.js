@@ -7,6 +7,7 @@ import './App.css';
 
 const App = () => {
   const ITEMS_PER_PAGE = 20;
+  const BASE_URL = "https://tweets-reads.herokuapp.com";
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,13 +18,13 @@ const App = () => {
   useEffect(() => {
     const updateStream = async () => {
       setLoading(true);
-      const res = await axios.get('http://localhost:8080/fetch/stream/'+search);
+      const res = await axios.get(BASE_URL+'/fetch/stream/'+search);
       console.log("res::"+JSON.stringify(res))
     };
 
     const fetchPosts = async () => {
       setLoading(true);
-      const res = await axios.get('http://localhost:8080/fetch/tweets');
+      const res = await axios.get(BASE_URL+'/fetch/tweets');
       console.log("response==>"+JSON.stringify(res.data.data.data));
       setPosts(res.data.data.data);
       setLoading(false);
