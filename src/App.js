@@ -17,13 +17,13 @@ const App = () => {
   useEffect(() => {
     const updateStream = async () => {
       setLoading(true);
-      const res = await axios.get('https://7ba3dbe5f8b0.ngrok.io/fetch/stream/'+search);
+      const res = await axios.get('http://localhost:8080/fetch/stream/'+search);
       console.log("res::"+JSON.stringify(res))
     };
 
     const fetchPosts = async () => {
       setLoading(true);
-      const res = await axios.get('https://7ba3dbe5f8b0.ngrok.io/fetch/tweets');
+      const res = await axios.get('http://localhost:8080/fetch/tweets');
       console.log("response==>"+JSON.stringify(res.data.data.data));
       setPosts(res.data.data.data);
       setLoading(false);

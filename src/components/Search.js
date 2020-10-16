@@ -9,8 +9,13 @@ const Search = ({ onSearch }) => {
 
     const getSearch = e => {
         e.preventDefault();
-        onSearch(search);
-        // setSearch('');
+        let updatedSearch;
+        if(search.charAt(0) === "@"){
+            updatedSearch = "from:"+search.substring(1);
+        } else {
+            console.log("dont change");
+        }
+        onSearch(updatedSearch);
     }
     
     return (
