@@ -14,8 +14,8 @@ const Search = ({ onSearch }) => {
             updatedSearch = "from:"+search.substring(1);
         } else {
             updatedSearch = search;
-            console.log("dont change");
         }
+        console.log("searched string::"+updatedSearch);
         onSearch(updatedSearch);
     }
     
