@@ -13,6 +13,7 @@ const Search = ({ onSearch }) => {
         if(search.charAt(0) === "@"){
             updatedSearch = "from:"+search.substring(1);
         } else {
+            updatedSearch = search;
             console.log("dont change");
         }
         onSearch(updatedSearch);
