@@ -1,5 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).  
 This app shows the tweets fetched from twitter streaming API on the homepage paginated.  
+DEMO URL - https://twitter-reactjs-app.herokuapp.com/  
 
 ## Available Scripts
 
